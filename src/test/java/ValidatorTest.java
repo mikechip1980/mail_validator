@@ -14,13 +14,14 @@ public class ValidatorTest {
 
     @Before
     public void init(){
-        validator= new SimpleTemplateValidator(); //change to desired implementation here
-     //   validator= new StandardInternetAddressValidator();
+       // validator= new SimpleTemplateValidator(); //change to desired implementation here
+        validator= new StandardInternetAddressValidator();
     }
 
     @Test
     public void emptyString(){
         assertFalse(validator.isValid(""));
+        assertFalse(validator.isValid(";;"));
     }
     @Test
     public void tooLongString(){
@@ -53,6 +54,8 @@ public class ValidatorTest {
                             };
         batchAssertTrue(variants);
     }
+
+
 
     @Test
     public void wrongSeparator(){
@@ -120,6 +123,13 @@ public class ValidatorTest {
     public void spacesCorrect(){
         String[] variants={" mchapleev@@gmail.com","mikhail@chapleev@gmail.com "," mikhail@chapleev@gmail.com "
                                 ," mikhail@chapleev@gmail.com ; mpetrov@gmail.com "};
+        batchAssertFalse(variants);
+    }
+
+    @Test
+    public void startIncorrect(){
+        String[] variants={"mchapleev@@gmail.com","mikhail@chapleev@gmail.com "," mikhail@chapleev@gmail.com "
+                ," mikhail@chapleev@gmail.com ; mpetrov@gmail.com "};
         batchAssertFalse(variants);
     }
 
