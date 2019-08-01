@@ -14,8 +14,8 @@ public class ValidatorTest {
 
     @Before
     public void init(){
-       // validator= new SimpleTemplateValidator(); //change to desired implementation here
-        validator= new StandardInternetAddressValidator();
+        validator= new SimpleTemplateValidator(); //change to desired implementation here
+        //validator= new StandardInternetAddressValidator();
     }
 
     @Test
