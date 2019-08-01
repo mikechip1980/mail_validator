@@ -23,8 +23,6 @@ public class SimpleTemplateValidator implements  Validator {
             }
             if (!pattern.matcher(mail.trim()).matches()) return false;
         }
-        if (mails.length==space) return false;
-        return true;
-
+        return !(mails.length==space);
     }
 }
